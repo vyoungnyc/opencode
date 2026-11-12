@@ -1,3 +1,29 @@
+# Repository Agent Guidance
+
+## Personal Harness Fork
+
+- This is `vyoungnyc/opencode`, a personal fork of `anomalyco/opencode`. Preserve upstream history, license notices, and existing engineering guidance.
+- For personal harness discovery, product decisions, or architecture work, start with [the living RFC/PRD](./specs/personal-harness/README.md). Load only the relevant section, not the entire document set.
+- Keep confirmed user decisions distinct from proposals and open questions. Record decisions in the RFC/PRD only after the user makes them; recommendations are not approval.
+- Contextual command review is a required capability, not an implemented security control. Keep its detailed design deferred unless the current task explicitly concerns it or a foundation decision depends on it.
+- Prefer existing OpenCode capabilities and supported extension points before increasing the fork's core changes. Recheck version-sensitive integration claims before implementation.
+- Use [SKILLS.md](./SKILLS.md) to find task-specific guidance. Read only matching skills and applicable package instructions; do not preload every skill.
+- Keep credentials, private configuration, session transcripts, and runtime artifacts out of shared instruction files and the RFC/PRD.
+
+## Communication
+
+- Lead with the result, recommendation, or blocker. Use concise, plain language.
+- Distinguish observed facts from proposals, inferences, and unverified behavior.
+- Report only checks actually run. Documentation or instruction changes do not prove runtime enforcement.
+
+## Instruction Ownership
+
+- `AGENTS.md` owns shared, model-agnostic repository guidance. Do not duplicate it in model-specific instruction files.
+- Keep the canonical filename `AGENTS.md`. Do not create a case-only `AGENTS.MD` duplicate.
+- Task-specific skills own reusable procedures; the living RFC/PRD owns product requirements and decisions.
+
+## Upstream Engineering Guidance
+
 - After changing the public Protocol or Server `HttpApi`, run `bun run generate` from `packages/client`. Do not edit generated client files directly.
 - Keep runtime dependencies directed from Schema to Core and Protocol, then from Core and Protocol to Server. Client runtime code may depend on Schema and Protocol but never Core or Server; `sdk` composes Client, Core, and Server.
 - This repository does not use Changesets. Do not add `.changeset` files; follow the existing release workflow instead.
